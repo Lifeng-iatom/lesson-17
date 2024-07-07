@@ -61,7 +61,7 @@ document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
 function updateCartQuantity(){
         
-    calculateCartQuantity();
+    const cartQuantity = calculateCartQuantity();
  
 
   document.querySelector('.js-cart-quantity')

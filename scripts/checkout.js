@@ -111,7 +111,8 @@ document.querySelectorAll('.js-delete-link')
 
 
   function updateCartQuantity(){
-      calculateCartQuantity();
+      const cartQuantity=calculateCartQuantity();
+
       if(cartQuantity>1){
         document.querySelector('.js-return-to-home-link').innerHTML =`${cartQuantity} items`;
         }else{
