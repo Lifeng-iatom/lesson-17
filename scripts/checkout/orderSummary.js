@@ -150,6 +150,7 @@ document.querySelectorAll('.js-save-quantity-link')
         const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
         quantityLabel.innerHTML = newQuantity;
         updateCartQuantity();
+        rendorPaymentSummary();
     })
 })
 
