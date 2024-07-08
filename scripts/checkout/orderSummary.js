@@ -4,6 +4,8 @@ import { formatCurrency } from "../utils/money.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js' 
 import {deliveryOptions, getDeliveryOption} from  '../../data/deliveryOption.js'
 import { rendorPaymentSummary } from "./paymentSummary.js";
+import { renderCheckoutHeader } from "./checkoutHeader.js";
+
 
 
 
@@ -151,6 +153,7 @@ document.querySelectorAll('.js-save-quantity-link')
         quantityLabel.innerHTML = newQuantity;
         updateCartQuantity();
         rendorPaymentSummary();
+        renderCheckoutHeader();
     })
 })
 
@@ -161,7 +164,7 @@ document.querySelectorAll('.js-delete-link')
     const productId = link.dataset.productId;
     removeFromCart(productId);
 
-      
+      renderCheckoutHeader();
     renderOrderSummary();     
     rendorPaymentSummary();
     updateCartQuantity();
