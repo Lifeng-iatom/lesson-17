@@ -169,14 +169,14 @@ document.querySelectorAll('.js-delete-link')
 })
 
 
-  function updateCartQuantity(){
+ function updateCartQuantity(){
       const cartQuantity=calculateCartQuantity();
 
       if(cartQuantity>1){
-        document.querySelector('.js-return-to-home-link').innerHTML =`${cartQuantity} items`;
-        }else{
-          document.querySelector('.js-return-to-home-link').innerHTML =`${cartQuantity} item`;
-        }
+            document.querySelector('.js-return-to-home-link').innerHTML =`${cartQuantity} items`;
+            }else{
+              document.querySelector('.js-return-to-home-link').innerHTML =`${cartQuantity} item`;
+            }
   }
 
 document.querySelectorAll('.js-delivery-option')
