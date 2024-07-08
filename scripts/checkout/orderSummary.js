@@ -5,7 +5,15 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'
 import {deliveryOptions, getDeliveryOption} from  '../../data/deliveryOption.js'
 import { rendorPaymentSummary } from "./paymentSummary.js";
 
+
+
+
+
+
 const today = dayjs();
+
+
+
 const deliveryDate=today.add(7,'days');
 deliveryDate.format('dddd, MMMM D')
 
@@ -153,8 +161,7 @@ document.querySelectorAll('.js-delete-link')
     removeFromCart(productId);
 
       
-    const container = document.querySelector(`.js-cart-item-container-${productId}`);
-    container.remove();
+    renderOrderSummary();     
     rendorPaymentSummary();
     updateCartQuantity();
   });
