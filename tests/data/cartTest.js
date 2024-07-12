@@ -1,4 +1,4 @@
-import { cart, addToCart, loadFromStorage, removeFromCart} from "../../data/cart.js";
+import { cart, addToCart, loadFromStorage, removeFromCart, updateDeliveryOption} from "../../data/cart.js";
 
 describe('Test suite:add to cart',()=>{
       const productId1='e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
@@ -124,4 +124,61 @@ describe('new suite: remove item from cart',()=>{
             expect(cart[0].quantity).toEqual(1);
 
       })
+})
+
+
+describe('new suite: update delivery option in cart',()=>{
+
+
+      const productId1='e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
+      beforeEach(()=>{
+            spyOn(localStorage,'setItem');
+            
+      })
+      it('cart item check',()=>{
+            spyOn(localStorage,'getItem').and.callFake(()=>{
+                  return JSON.stringify([{
+                        productId: productId1,
+                        quantity:1,
+                        deliveryOptionId:'1'
+                  }]);
+            });
+            loadFromStorage();
+            updateDeliveryOption(productId1,'3');
+
+            expect(cart.length).toEqual(1);
+            expect(cart[0].productId).toEqual(productId1);
+            expect(cart[0].quantity).toEqual(1);
+            expect(cart[0].deliveryOptionId).toEqual('3');
+            expect(localStorage.setItem).toHaveBeenCalledTimes(1);
+            expect(localStorage.setItem).toHaveBeenCalledWith('cart',JSON.stringify(
+                  [         {
+                        productId: productId1,
+                        quantity:1,
+                        deliveryOptionId:'3'
+                  }         ]
+            ));
+
+      })
+
+      it('update delivery option that product not in cart',()=>{
+            spyOn(localStorage,'getItem').and.callFake(()=>{
+                  return JSON.stringify([{
+                        productId: productId1,
+                        quantity:1,
+                        deliveryOptionId:'1'
+                  }]);
+            });
+            loadFromStorage();
+            updateDeliveryOption('item-not-in-cart','3');
+
+            expect(cart.length).toEqual(1);
+            expect(cart[0].productId).toEqual(productId1);
+            expect(cart[0].quantity).toEqual(1);
+            expect(cart[0].deliveryOptionId).toEqual('1');
+            expect(localStorage.setItem).toHaveBeenCalledTimes(0);
+           
+
+      })
+
 })
