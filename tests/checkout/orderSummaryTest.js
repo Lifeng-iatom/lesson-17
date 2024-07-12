@@ -61,6 +61,15 @@ describe('test suite:render order summary',()=>{
              expect ( 
             document.querySelector(`.js-product-quantity-${productId2}`).innerText
       ).toContain('Quantity: 1');
+
+            expect(
+                  document.querySelector(`.js-product-price-${productId1}`).innerText
+            ).toEqual('$10.90') ;
+
+            expect(
+                  document.querySelector(`.js-product-price-${productId2}`).innerText
+            ).toEqual('$20.95')  ; 
+     
      
             
       });
