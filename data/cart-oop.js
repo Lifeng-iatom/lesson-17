@@ -1,3 +1,4 @@
+// create oop version of cart
 import { validDeliveryOption } from "./deliveryOption.js";
 
 function Cart(localStorageKey){

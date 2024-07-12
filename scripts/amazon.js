@@ -1,3 +1,4 @@
+//try
 import { cart, addToCart, calculateCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 let productsHTML = '';
