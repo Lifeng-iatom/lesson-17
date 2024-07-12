@@ -181,4 +181,24 @@ describe('new suite: update delivery option in cart',()=>{
 
       })
 
+      it('update delivery option is not in Deliveryoptions',()=>{
+            spyOn(localStorage,'getItem').and.callFake(()=>{
+                  return JSON.stringify([{
+                        productId: productId1,
+                        quantity:1,
+                        deliveryOptionId:'1'
+                  }]);
+            });
+            loadFromStorage();
+            updateDeliveryOption(productId1,'4');
+
+            expect(cart.length).toEqual(1);
+            expect(cart[0].productId).toEqual(productId1);
+            expect(cart[0].quantity).toEqual(1);
+            expect(cart[0].deliveryOptionId).toEqual('1');
+            expect(localStorage.setItem).toHaveBeenCalledTimes(0);
+           
+
+      })
+
 })
