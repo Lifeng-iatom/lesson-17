@@ -46,6 +46,14 @@ describe('test suite:render order summary',()=>{
                   document.querySelectorAll('.js-cart-item-container').length
             ).toEqual(2);
 
+            expect(
+                  document.querySelector(`.js-product-name-${productId1}`).innerText
+            ).toEqual('Black and Gray Athletic Cotton Socks - 6 Pairs')
+
+            expect(
+                  document.querySelector(`.js-product-name-${productId2}`).innerText
+            ).toEqual('Intermediate Size Basketball')
+
            expect ( 
             document.querySelector(`.js-product-quantity-${productId1}`).innerText
       ).toContain('Quantity: 2');
