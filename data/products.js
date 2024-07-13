@@ -33,7 +33,30 @@ class Product  {
     return `$${formatCurrency(this.priceCents)}`;
   }
 
+  extraInfoHTML(){
+    return '';
+  }
 }
+
+//add clothing class
+class Clothing extends Product {
+
+  sizeChartLink;
+  constructor(productDetails){
+    super(productDetails);
+    this.sizeChartLink=productDetails.sizeChartLink;
+  }
+
+  extraInfoHTML(){
+    //super.extraInfoHTML();
+    return `
+      <a href="${this.sizeChartLink}" target="_blacnk">
+        Size Chart
+      </a>
+    `;
+  }
+}
+
 
 
 // convert product array to a class array;
@@ -697,6 +720,10 @@ export const products = [
     ]
   }
 ].map((productDetails)=>{
+  if(productDetails.type === 'clothing'){
+      return new Clothing (productDetails);
+  }
   return new Product(productDetails);
+  
 });
 console.log(products);
