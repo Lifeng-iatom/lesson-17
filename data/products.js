@@ -59,6 +59,9 @@ class Clothing extends Product {
 
 
 
+
+
+
 // convert product array to a class array;
 export const products = [
  {
@@ -726,4 +729,4 @@ export const products = [
   return new Product(productDetails);
   
 });
-console.log(products);
+
