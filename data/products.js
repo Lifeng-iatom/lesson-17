@@ -11,7 +11,7 @@ export function getProduct(productId){
   return matchingProduct;
 }
 
-class Product  {
+export class Product  {
   id;
   image;
   name;
@@ -39,7 +39,7 @@ class Product  {
 }
 
 //add clothing class
-class Clothing extends Product {
+export class Clothing extends Product {
 
   sizeChartLink;
   constructor(productDetails){
@@ -50,7 +50,7 @@ class Clothing extends Product {
   extraInfoHTML(){
     //super.extraInfoHTML();
     return `
-      <a href="${this.sizeChartLink}" target="_blacnk">
+      <a href="${this.sizeChartLink}" target="_blank">
         Size Chart
       </a>
     `;
@@ -58,7 +58,7 @@ class Clothing extends Product {
 }
 
 
-class Appliance extends Product{
+ export class Appliance extends Product{
     instructionsLink;
     warrentyLink;
 
@@ -70,10 +70,10 @@ class Appliance extends Product{
 
     extraInfoHTML(){
       return `
-      <a href="${this.instructionsLink}" target="_blacnk">
+      <a href="${this.instructionsLink}" target="_blank">
         Instruction
       </a>
-      <a href="${this.warrentyLink}" target="_blacnk">
+      <a href="${this.warrentyLink}" target="_blank">
         Warrenty
       </a>
       `
