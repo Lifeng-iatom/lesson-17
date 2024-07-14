@@ -1,5 +1,5 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
-import { loadFromStorage, cart } from "../../data/cart.js";
+import { cart } from "../../data/cart-class.js";
 
 
 describe('test suite:render order summary',()=>{
@@ -19,8 +19,7 @@ describe('test suite:render order summary',()=>{
             `;
 
            
-            spyOn(localStorage,'getItem').and.callFake(()=>{
-                  return JSON.stringify([
+            cart.cartItems = [
                         {
                           productId: productId1,
                           quantity:2,
@@ -31,10 +30,9 @@ describe('test suite:render order summary',()=>{
                           quantity:1,
                           deliveryOptionId:'2'
                         }
-                  ]);
-            });
+                  ]
             
-            loadFromStorage();
+            
             renderOrderSummary();
 
       })
@@ -90,8 +88,8 @@ describe('test suite:render order summary',()=>{
                   document.querySelector(`.js-cart-item-container-${productId2}`)
                   ).not.toEqual(null);
 
-            expect(cart.length).toEqual(1);
-            expect(cart[0].productId).toEqual(productId2);
+            expect(cart.cartItems.length).toEqual(1);
+            expect(cart.cartItems[0].productId).toEqual(productId2);
             
       });
 
@@ -104,9 +102,9 @@ describe('test suite:render order summary',()=>{
             document.querySelector(`.js-delivery-option-input-${productId1}-3`).checked
             ).toEqual(true);
 
-            expect(cart.length).toEqual(2);
-            expect(cart[0].productId).toEqual(productId1);
-            expect(cart[0].deliveryOptionId).toEqual('3');
+            expect(cart.cartItems.length).toEqual(2);
+            expect(cart.cartItems[0].productId).toEqual(productId1);
+            expect(cart.cartItems[0].deliveryOptionId).toEqual('3');
             expect(
                   document.querySelector('.js-shipping-price').innerText
             ).toEqual('$14.98');

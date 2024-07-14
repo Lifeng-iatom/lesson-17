@@ -1,5 +1,5 @@
-//try
-import { cart, addToCart, calculateCartQuantity } from "../data/cart.js";
+
+import { cart } from "../data/cart-class.js";
 import { products } from "../data/products.js";
 let productsHTML = '';
 updateCartQuantity();
@@ -65,7 +65,7 @@ document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
 function updateCartQuantity(){
         
-    const cartQuantity = calculateCartQuantity();
+    const cartQuantity = cart.calculateCartQuantity();
  
 
   document.querySelector('.js-cart-quantity')
@@ -78,7 +78,7 @@ document.querySelectorAll('.js-add-to-cart')
     button.addEventListener('click', () => {
       const productId = button.dataset.productId;
 
-      addToCart(productId);
+      cart.addToCart(productId);
       updateCartQuantity();
       
       
